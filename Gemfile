@@ -16,10 +16,20 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+#group :development, :test do
+#	gem 'sqlite3'
+#end
+
+group :production do
+	gem 'pg'
+end
+
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'   # I want to use my own authorization method, just like in codeacademy's cources, but I can't do it right without user_sign_in method
 gem 'devise', '~> 4.2'				  # So I forced to use best practice with this gem
+
+gem 'heroku_external_db'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,6 +54,7 @@ ruby '2.2.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  
 end
 
 group :development do
@@ -53,4 +64,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
 
