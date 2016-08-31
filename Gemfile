@@ -13,7 +13,7 @@ gem 'rails', '4.2.4'
 gem 'mysql2'
 
 #group :development, :test do
-	gem 'sqlite3'
+#	gem 'sqlite3'
 #end
 
 # Use SCSS for stylesheets
@@ -29,9 +29,9 @@ gem 'coffee-rails', '~> 4.1.0'
 #	gem 'sqlite3'
 #end
 
-#group :production do
+group :production do
 	gem 'pg'
-#end
+end
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
