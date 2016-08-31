@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 
 	before_action :find_project, only: [:show, :edit, :update, :destroy]
 
+
 	def index
 		if user_signed_in?
 			@projects = Project.where(:user_id => current_user.id).order("created_at DESC")
@@ -9,7 +10,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
-		@project = current_user.projects.build
+		@project = current_user.projects.build		
 	end
 
 	def create

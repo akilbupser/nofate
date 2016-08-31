@@ -1,45 +1,74 @@
 <% if user_signed_in? %>
+
 <div class="col-md-6 col-md-offset-3">
+	<table class="table table-bordered table-hover">
 	<% @projects.each do |project| %>
-
 		<%if project.completed? %>
-			<div class="row item">
-
-				<div class="col-md-8">
-					<h1 style="opacity 0.5;"><strike><%= link_to project.title, project %></strike></h1>
-					<h2 style="opacity 0.5;"><%= project.author %></h2>
-					<p style="opacity 0.5;"> Comleted <%= time_ago_in_words(project.completed_at) %> ago </p>
-				</div>
-
-				<div class="col-md-2">
-					<p><%= link_to "C",complete_project_path(project), method: :patch %></p>
-				</div>	
-				<div class="col-md-2">						
-					<p><%= link_to "D", project, method: :delete, data: {confirm: "Are You sure?"} %></p>
-				</div>
-			</div>
-
+		
+			<tbody>
+				<div class="row item">
+					<tr>
+						<div class="col-md-8" >						
+							<td title="Completed <%= time_ago_in_words(project.completed_at) %> ago">
+								<h2 style="opacity 0.5;"><strike><%= link_to project.title, project %></strike></h2>
+								<h3 style="opacity 0.5;"><%= project.author %></h3>						
+							</td>						
+						</div>
 				
-			
-		<%else%>
-			<div class="row item">
-				<div class="col-md-8">
-					<h1><%= link_to project.title, project %></h1>
-					<h2><%= project.author %></h2>
-					<p> Created <%= time_ago_in_words(project.created_at) %> ago </p>
-				</div>
-				<div class="col-md-2">
-					<p><%= link_to "C", complete_project_path(project), method: :patch %></p>
-				</div>
-				<div class="col-md-2">
-					<p><%= link_to "D", project, method: :delete, data: {confirm: "Are You sure?"} %></p>
-				</div>
-			</div>
+						<div class="col-md-2">
+							<td>
+								<h1><%= link_to complete_project_path(project), method: :patch do%></h1>
+									<i class="glyphicon glyphicon-ok"></i>
+								<%end%>
+							</td>
+						</div>	
+						<div class="col-md-2">						
+							<td>
+							<h1><%= link_to project, method: :delete, data: {confirm: "Are You sure?"} do%></h1>
+								<i class="glyphicon glyphicon-trash"></i>
+							<%end%>
+							</td>
+						</div>
+					</tr>
+				</div>					
+				
+			<%else%>
 
-		<% end %>
+				<div class="row item">
+					<tr>
+						<div class="col-md-8">						
+							<td title="Created <%= time_ago_in_words(project.created_at) %> ago">
+								<h2><%= link_to project.title, project %></h2>
+								<h3><%= project.author %></h3>			
+													
+							</td>
+						</div>
+						<div class="col-md-2">
+							<td>
+								<h1><%= link_to complete_project_path(project), method: :patch do%></h1>
+									<i class="glyphicon glyphicon-ok"></i>
+								<%end%>			
+							</td>		
+						</div>
+						<div class="col-md-2">
+							<!-- <button type="button", class="btn btn-default"> -->
+							<td>
+								<h1><%= link_to project, method: :delete, data: {confirm: "Are You sure?"} do%></h1>
+								<i class="glyphicon glyphicon-trash"></i>
+								<%end%>
+							</td>
+						</div>
+					</tr>
+				</div>
+
+		<% end %>		
 	<% end %>
+			</tbody>
+	</table>
 </div>
+
 <% else %>
 	<%= render 'layouts/static_landing_page' %>
+
 <% end %>
 	

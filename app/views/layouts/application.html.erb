@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todoapp4</title>
+  <title>NoFate</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 </head>
+
 <body>
+	
+<!--	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+	<script src="/home/anton/todoapp_5/app/assets/javascripts/jquery.backstretch.min.js"></script>;-->
+
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> 
-
+    
     <nav class="navbar navbar-default">
 
 		<div class="container">
-			<div class="navbar-header">
-				<%= link_to "Projects", root_path, class: "navbar-brand" %>
-			</div>
-				<ul class="nav navbar-nav">
-					<li><%= link_to "Sign up", new_user_registration_path %></li>
-						<% if current_user.present? %>
-					<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-						<%else%>		
+			<% if user_signed_in? %>					
+				<div class="navbar-header">
+					<%= link_to "Projects", root_path, class: "navbar-brand navbar-left" %>
+				</div>	
+
+				<div class="navbar-text">
+					Logged in as <%= current_user.email%>
+				 </div>
+
+				<%= link_to "New progect", new_project_path, class: "navbar-text navbar-link navbar-right" %>
+			<% end %>
+
+			<ul class="nav navbar-nav">
+				<li><%= link_to "Sign up", new_user_registration_path %></li>
+					<% if current_user.present? %>
+						<li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+					<%else%>		
 						<li><%= link_to "Log in", new_user_session_path%></li>
-						<% end %>
-				</ul>
+						
+						<div class="navbar-text">
+							Create your own fate
+				 		</div>
 
-				<% if user_signed_in? %>
-					<div class="navbar-text">
-						Logged in as <%= current_user.email%>
-					 </div>
-					<%= link_to "New progect", new_project_path, class: "navbar-text navbar-link navbar-right" %>
-				<% end %>
+					<% end %>
 
+			</ul>
 		</div>
-	</nav>
 
+	</nav>
+	
 <div class="container">  
 	<%= yield %>
 </div>
 
 </body>
+
 </html>
