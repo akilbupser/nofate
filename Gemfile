@@ -12,9 +12,9 @@ gem 'rails', '4.2.4'
 
 gem 'mysql2'
 
-group :development, :test do
+#group :development, :test do
 	gem 'sqlite3'
-end
+#end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
