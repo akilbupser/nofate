@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 group :production do
-	gem 'rails_12factor'
+  gem 'rails_12factor'
 end
 
 
@@ -10,10 +10,10 @@ end
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 
-gem 'mysql2'
-gem 'mysql'
+#gem 'mysql2'
+#gem 'mysql'
 group :development, :test do
-	gem 'sqlite3'
+  gem 'sqlite3'
 end
 
 # Use SCSS for stylesheets
@@ -30,7 +30,7 @@ gem 'coffee-rails', '~> 4.1.0'
 #end
 
 group :production do
-	gem 'pg'
+  gem 'pg' 
 end
 
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
