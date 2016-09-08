@@ -4,6 +4,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem "unicorn"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
